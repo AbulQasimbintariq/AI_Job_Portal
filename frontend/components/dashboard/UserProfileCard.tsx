@@ -1,69 +1,3 @@
-// "use client";
-
-// import Link from "next/link";
-// import { User, Mail, Shield, Calendar } from "lucide-react";
-
-// interface UserProfileCardProps {
-//     name: string;
-//     email: string;
-//     role: string;
-//     joinedAt: string;
-// }
-
-// export default function UserProfileCard({
-//     name,
-//     email,
-//     role,
-//     joinedAt,
-// }: UserProfileCardProps) {
-//     return (
-//         <div className= "rounded-2xl bg-white p-6 shadow-md" >
-//         <div className="flex flex-col items-center" >
-
-//             <div className="flex h-24 w-24 items-center justify-center rounded-full bg-blue-600 text-white" >
-//                 <User size={ 40 } />
-//                     </div>
-
-//                     < h2 className = "mt-4 text-2xl font-bold" >
-//                         { name }
-//                         </h2>
-
-//                         < p className = "text-gray-500" >
-//                             { email }
-//                             </p>
-
-//                             </div>
-
-//                             < div className = "mt-8 space-y-4" >
-
-//                                 <div className="flex items-center gap-3" >
-//                                     <Shield size={ 18 } className = "text-blue-600" />
-//                                         <span>{ role } </span>
-//                                         </div>
-
-//                                         < div className = "flex items-center gap-3" >
-//                                             <Mail size={ 18 } className = "text-green-600" />
-//                                                 <span>{ email } </span>
-//                                                 </div>
-
-//                                                 < div className = "flex items-center gap-3" >
-//                                                     <Calendar size={ 18 } className = "text-orange-600" />
-//                                                         <span>Joined { joinedAt } </span>
-//                                                             </div>
-
-//                                                             </div>
-
-//                                                             < Link
-//     href = "/dashboard/profile"
-//     className = "mt-8 block rounded-xl bg-blue-600 py-3 text-center font-semibold text-white transition hover:bg-blue-700"
-//         >
-//         Edit Profile
-//             </Link>
-//             </div>
-//   );
-// }
-
-
 "use client";
 
 import Link from "next/link";
@@ -78,10 +12,22 @@ import {
 import { useCurrentUser } from "@/hooks/useCurrentUser";
 // import { useAuth } from "@/hooks/useAuth";
 
-export default function UserProfileCard() {
+interface UserProfileCardProps {
+    name: string;
+    email: string;
+    role: string;
+    joinedAt: string;
+}
+
+export default function UserProfileCard
+    ({
+        name,
+        email,
+        role,
+        joinedAt,
+    }: UserProfileCardProps) {
     const { user, loading } = useCurrentUser();
     // const { user, loading } = useAuth();
-
     if (loading) {
         return (
             <div className= "rounded-2xl bg-white p-6 shadow-md" >

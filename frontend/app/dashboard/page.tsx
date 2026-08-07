@@ -121,9 +121,9 @@ color = "bg-orange-600"
 
 <UserProfileCard
             name="Abul Qasim"
-email = "abul@example.com"
-role = "Candidate"
-joinedAt = "August 2026"
+        email = "abul@example.com"
+        role = "Candidate"
+        joinedAt = "August 2026"
     />
 
     </div>

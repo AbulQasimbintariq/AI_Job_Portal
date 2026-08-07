@@ -9,12 +9,12 @@ export default function ThemeProvider({
 }: ThemeProviderProps) {
     return (
         <NextThemesProvider
-      attribute= "class"
-    defaultTheme = "system"
-    enableSystem
-    disableTransitionOnChange
-    {...props }
-    >
+          attribute= "class"
+          defaultTheme = "system"
+          enableSystem
+              disableTransitionOnChange
+             {...props }
+             >
         { children }
         </NextThemesProvider>
   );
