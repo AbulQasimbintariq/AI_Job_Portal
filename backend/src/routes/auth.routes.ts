@@ -1,10 +1,24 @@
 import { Router } from "express";
+import {
+    register,
+    login,
+    logout,
+    me,
+} from "../controllers/auth.controller";
+import { protect } from "../middleware/auth.middleware";
 
 const router = Router();
 
-// POST /api/auth/register
-// POST /api/auth/login
-// POST /api/auth/logout
-// GET /api/auth/me
+/**
+ * Auth Routes
+ */
+
+router.post("/register", register);
+
+router.post("/login", login);
+
+router.post("/logout", logout);
+
+router.get("/me", protect, me);
 
 export default router;
