@@ -119,12 +119,7 @@ color = "bg-orange-600"
 
 {/* Right Side */ }
 
-<UserProfileCard
-            name="Abul Qasim"
-        email = "abul@example.com"
-        role = "Candidate"
-        joinedAt = "August 2026"
-    />
+<UserProfileCard/>
 
     </div>
 

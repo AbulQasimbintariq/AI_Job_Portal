@@ -10,164 +10,121 @@ import {
 } from "lucide-react";
 
 import { useCurrentUser } from "@/hooks/useCurrentUser";
-// import { useAuth } from "@/hooks/useAuth";
 
-interface UserProfileCardProps {
-    name: string;
-    email: string;
-    role: string;
-    joinedAt: string;
-}
-
-export default function UserProfileCard
-    ({
-        name,
-        email,
-        role,
-        joinedAt,
-    }: UserProfileCardProps) {
+export default function UserProfileCard() {
     const { user, loading } = useCurrentUser();
-    // const { user, loading } = useAuth();
+
     if (loading) {
         return (
-            <div className= "rounded-2xl bg-white p-6 shadow-md" >
-            <div className="animate-pulse space-y-4" >
-                <div className="mx-auto h-24 w-24 rounded-full bg-slate-200" />
+            <div className= "rounded-2xl bg-white p-6 shadow-md dark:bg-slate-900" >
+            <div className="animate-pulse" >
+                <div className="mx-auto h-24 w-24 rounded-full bg-slate-200 dark:bg-slate-700" />
 
-                    <div className="mx-auto h-6 w-40 rounded bg-slate-200" />
+                    <div className="mx-auto mt-5 h-6 w-40 rounded bg-slate-200 dark:bg-slate-700" />
 
-                        <div className="mx-auto h-4 w-56 rounded bg-slate-200" />
+                        <div className="mx-auto mt-3 h-4 w-56 rounded bg-slate-200 dark:bg-slate-700" />
 
-                            <div className="space-y-3 pt-6" >
-                                <div className="h-4 rounded bg-slate-200" />
-                                    <div className="h-4 rounded bg-slate-200" />
-                                        <div className="h-4 rounded bg-slate-200" />
+                            <div className="mt-8 space-y-5" >
+                                <div className="h-5 rounded bg-slate-200 dark:bg-slate-700" />
+                                    <div className="h-5 rounded bg-slate-200 dark:bg-slate-700" />
+                                        <div className="h-5 rounded bg-slate-200 dark:bg-slate-700" />
                                             </div>
 
-                                            < div className = "h-10 rounded-xl bg-slate-200" />
+                                            < div className = "mt-8 h-12 rounded-xl bg-slate-200 dark:bg-slate-700" />
                                                 </div>
                                                 </div>
     );
     }
 
     return (
-        <div className= "rounded-2xl bg-white p-6 shadow-md" >
-
+        <div className= "rounded-2xl bg-white p-6 shadow-md transition dark:bg-slate-900 dark:text-white" >
         {/* Avatar */ }
-
         < div className = "flex flex-col items-center" >
-
             <div className="flex h-24 w-24 items-center justify-center rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg" >
-
                 <User size={ 40 } />
-
                     </div>
 
-                    < h2 className = "mt-5 text-2xl font-bold text-slate-800" >
+                    < h2 className = "mt-5 text-2xl font-bold" >
                         { user?.name ?? "User"
 }
 </h2>
 
-    < p className = "mt-1 text-center text-sm text-slate-500" >
+    < p className = "mt-1 text-center text-sm text-slate-500 dark:text-slate-400" >
         { user?.email ?? "-"}
 </p>
-
     </div>
 
 {/* Divider */ }
-
-<div className="my-6 border-t" />
+<div className="my-6 border-t border-slate-200 dark:border-slate-700" />
 
     {/* User Information */ }
-
     < div className = "space-y-5" >
-
         <div className="flex items-center gap-3" >
-
             <Shield
             size={ 18 }
 className = "text-blue-600"
     />
 
     <div>
-
-    <p className="text-xs text-slate-500" >
+    <p className="text-xs text-slate-500 dark:text-slate-400" >
         Role
         </p>
 
         < p className = "font-medium capitalize" >
             { user?.role ?? "-"}
 </p>
-
     </div>
-
     </div>
 
     < div className = "flex items-center gap-3" >
-
         <Mail
             size={ 18 }
 className = "text-green-600"
     />
 
     <div>
-
-    <p className="text-xs text-slate-500" >
+    <p className="text-xs text-slate-500 dark:text-slate-400" >
         Email
         </p>
 
-        < p className = "font-medium break-all" >
+        < p className = "break-all font-medium" >
             { user?.email ?? "-"}
 </p>
-
     </div>
-
     </div>
 
     < div className = "flex items-center gap-3" >
-
         <Calendar
             size={ 18 }
 className = "text-orange-600"
     />
 
     <div>
-
-    <p className="text-xs text-slate-500" >
+    <p className="text-xs text-slate-500 dark:text-slate-400" >
         Member Since
             </p>
 
             < p className = "font-medium" >
             {
                 user?.createdAt
-                    ? new Date(
-                        user.createdAt
-                    ).toLocaleDateString()
+                    ? new Date(user.createdAt).toLocaleDateString()
                 : "-"}
                 </p>
-
                 </div>
-
                 </div>
-
                 </div>
 
 {/* Divider */ }
-
-<div className="my-6 border-t" />
+<div className="my-6 border-t border-slate-200 dark:border-slate-700" />
 
     {/* Action Button */ }
-
     < Link
 href = "/dashboard/profile"
 className = "flex items-center justify-center gap-2 rounded-xl bg-blue-600 py-3 font-semibold text-white transition hover:bg-blue-700"
     >
     <Pencil size={ 18 } />
-
         Edit Profile
-
     </Link>
-
     </div>
   );
 }
