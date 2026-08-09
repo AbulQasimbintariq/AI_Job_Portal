@@ -58,7 +58,7 @@ import {
  * Resume Analyzer
  * =====================================================
  */
-export const analyzeResumeController = asyncHandler(async (req: Request, res: Response) => {
+export const analyzeResumeController = asyncHandler(async (req: Request, res: Response):Promise<any> => {
     try {
         const data = analyzeResumeSchema.parse(req.body);
 
@@ -82,7 +82,7 @@ export const analyzeResumeController = asyncHandler(async (req: Request, res: Re
  * Resume Tailoring
  * =====================================================
  */
-export const tailorResumeController = asyncHandler(async (req: Request, res: Response) => {
+export const tailorResumeController = asyncHandler(async (req: Request, res: Response):Promise<any> => {
     try {
         const data = tailorResumeSchema.parse(req.body);
 
@@ -106,7 +106,7 @@ export const tailorResumeController = asyncHandler(async (req: Request, res: Res
  * Cover Letter Generator
  * =====================================================
  */
-export const generateCoverLetterController = asyncHandler(async (req: Request, res: Response) => {
+export const generateCoverLetterController = asyncHandler(async (req: Request, res: Response):Promise<any> => {
     try {
         const data = coverLetterSchema.parse(req.body);
 
@@ -132,7 +132,7 @@ export const generateCoverLetterController = asyncHandler(async (req: Request, r
  * Interview Questions
  * =====================================================
  */
-export const generateInterviewQuestionsController = asyncHandler(async (req: Request, res: Response) => {
+export const generateInterviewQuestionsController = asyncHandler(async (req: Request, res: Response): Promise<any> => {
     try {
         const data = interviewQuestionSchema.parse(req.body);
 
@@ -156,7 +156,7 @@ export const generateInterviewQuestionsController = asyncHandler(async (req: Req
  * Job Match Score
  * =====================================================
  */
-export const generateJobMatchScoreController = asyncHandler(async (req: Request, res: Response) => {
+export const generateJobMatchScoreController = asyncHandler(async (req: Request, res: Response): Promise<any> => {
     try {
         const data = jobMatchSchema.parse(req.body);
 
@@ -180,7 +180,7 @@ export const generateJobMatchScoreController = asyncHandler(async (req: Request,
  * Skill Gap Analyzer
  * =====================================================
  */
-export const analyzeSkillGapController = asyncHandler(async (req: Request, res: Response) => {
+export const analyzeSkillGapController = asyncHandler(async (req: Request, res: Response): Promise<any> => {
     try {
         const data = skillGapSchema.parse(req.body);
 
@@ -204,7 +204,7 @@ export const analyzeSkillGapController = asyncHandler(async (req: Request, res: 
  * Resume Bullet Enhancer
  * =====================================================
  */
-export const enhanceResumeBulletsController = asyncHandler(async (req: Request, res: Response) => {
+export const enhanceResumeBulletsController = asyncHandler(async (req: Request, res: Response): Promise<any> => {
     try {
         const data = resumeBulletSchema.parse(req.body);
 
@@ -232,7 +232,7 @@ export const enhanceResumeBulletsController = asyncHandler(async (req: Request, 
  * AI Health
  * =====================================================
  */
-export const healthController = asyncHandler(async (_req: Request, res: Response) => {
+export const healthController = asyncHandler(async (_req: Request, res: Response):Promise<any> => {
     return successResponse(res, "AI Service is running", {
         provider: "Google Gemini",
         model: "gemini-3.6-flash",
@@ -247,7 +247,7 @@ export const healthController = asyncHandler(async (_req: Request, res: Response
  */
 
 export const evaluateInterviewAnswerController = asyncHandler(
-    async (req: Request, res: Response) => {
+    async (req: Request, res: Response): Promise<any> => {
         try {
             const data = mockInterviewSchema.parse(req.body);
 
@@ -280,7 +280,7 @@ export const evaluateInterviewAnswerController = asyncHandler(
  */
 
 export const generateCareerAdviceController = asyncHandler(
-    async (req: Request, res: Response) => {
+    async (req: Request, res: Response): Promise<any> => {
         try {
             const data = careerAdviceSchema.parse(req.body);
 
@@ -311,7 +311,7 @@ export const generateCareerAdviceController = asyncHandler(
  */
 
 export const recommendJobsController = asyncHandler(
-    async (req: Request, res: Response) => {
+    async (req: Request, res: Response): Promise<any> => {
         try {
             const data = jobRecommendationSchema.parse(req.body);
 
@@ -342,7 +342,7 @@ export const recommendJobsController = asyncHandler(
  */
 
 export const evaluateCandidateController = asyncHandler(
-    async (req: Request, res: Response) => {
+    async (req: Request, res: Response): Promise<any> => {
         try {
             const data = recruiterEvaluationSchema.parse(req.body);
 
@@ -373,7 +373,7 @@ export const evaluateCandidateController = asyncHandler(
  */
 
 export const parseResumeController = asyncHandler(
-    async (req: Request, res: Response) => {
+    async (req: Request, res: Response): Promise<any> => {
         try {
             const data = parseResumeSchema.parse(req.body);
 
@@ -404,7 +404,7 @@ export const parseResumeController = asyncHandler(
  */
 
 export const uploadResumeController = asyncHandler(
-    async (req: Request, res: Response) => {
+    async (req: Request, res: Response): Promise<any> => {
         try {
             if (!req.file) {
                 return errorResponse(

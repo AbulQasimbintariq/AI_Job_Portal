@@ -13,6 +13,8 @@ export interface IUser extends Document {
     role: UserRole;
     avatar?: string;
     isVerified: boolean;
+    createdAt: Date;
+    updatedAt: Date;
 }
 
 const UserSchema = new Schema<IUser>(

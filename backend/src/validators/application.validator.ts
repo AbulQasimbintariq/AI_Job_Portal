@@ -8,13 +8,16 @@ export const applyJobSchema = z.object({
     coverLetter: z.string().optional(),
 });
 
+
+export enum ApplicationStatus {
+    PENDING = "Pending",
+    REVIEWING = "Reviewing",
+    SHORTLISTED = "Shortlisted",
+    INTERVIEW = "Interview",
+    HIRED = "Hired",
+    REJECTED = "Rejected",
+}
+
 export const updateApplicationStatusSchema = z.object({
-    status: z.enum([
-        "Pending",
-        "Reviewing",
-        "Shortlisted",
-        "Interview",
-        "Hired",
-        "Rejected",
-    ]),
+    status: z.enum(ApplicationStatus)
 });

@@ -33,6 +33,11 @@ export interface IResume extends Document {
     education: IEducation[];
     experience: IExperience[];
     projects: IProject[];
+    createdAt: Date;
+    updatedAt: Date;
+    filePath: string;
+    isDefault: true;
+    title: string;
 }
 
 const EducationSchema = new Schema<IEducation>(
