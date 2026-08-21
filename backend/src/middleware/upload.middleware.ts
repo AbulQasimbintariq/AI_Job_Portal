@@ -1,87 +1,40 @@
-import multer, { FileFilterCallback } from "multer";
-import path from "path";
-import fs from "fs";
-import { Request } from "express";
-
-/**
- * =====================================================
- * Ensure uploads directory exists
- * =====================================================
- */
-
-const uploadDir = path.join(process.cwd(), "uploads");
-
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-}
-
-/**
- * =====================================================
- * Multer Storage Configuration
- * =====================================================
- */
-
-const storage = multer.diskStorage({
-    destination: (_req, _file, cb) => {
-        cb(null, uploadDir);
-    },
-
-    filename: (_req, file, cb) => {
-        const uniqueName =
-            Date.now() +
-            "-" +
-            Math.round(Math.random() * 1e9);
-
-        cb(
-            null,
-            uniqueName + path.extname(file.originalname)
-        );
-    },
-});
-
-/**
- * =====================================================
- * Allowed MIME Types
- * =====================================================
- */
+import multer from "multer";
 
 const allowedMimeTypes = [
+    // Resume
     "application/pdf",
-
+    "application/msword",
     "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+
+    // Images
+    "image/jpeg",
+    "image/png",
+    "image/webp",
 ];
 
-/**
- * =====================================================
- * File Filter
- * =====================================================
- */
-
-const fileFilter = (
-    _req: Request,
-    file: Express.Multer.File,
-    cb: FileFilterCallback
+const fileFilter: multer.Options["fileFilter"] = (
+    _req,
+    file,
+    callback
 ) => {
     if (allowedMimeTypes.includes(file.mimetype)) {
-        return cb(null, true);
+        callback(null, true);
+        return;
     }
 
-    cb(
+    callback(
         new Error(
-            "Only PDF and DOCX files are allowed."
+            "Invalid file type. Allowed files are PDF, DOC, DOCX, JPG, PNG, and WEBP."
         )
     );
 };
 
-/**
- * =====================================================
- * Upload Middleware
- * =====================================================
- */
+const storage = multer.memoryStorage();
 
 export const uploadResume = multer({
     storage,
     fileFilter,
+
     limits: {
         fileSize: 5 * 1024 * 1024,
     },
