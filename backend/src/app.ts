@@ -8,6 +8,7 @@ import companyRoutes from "./routes/company.routes";
 import applicationRoutes from "./routes/application.routes";
 import uploadRoutes from "./routes/upload.routes";
 import aiRoutes from "./routes/ai.routes";
+import dashboardRoutes from "./routes/dashboard.routes";
 
 const app = express();
 
@@ -70,6 +71,7 @@ app.use("/api/jobs", jobRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/companies", companyRoutes);
 app.use("/api/ai", aiRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 
 /*
 |--------------------------------------------------------------------------

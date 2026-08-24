@@ -10,7 +10,7 @@ import {
 const actions = [
     {
         title: "Upload Resume",
-        href: "/dashboard/esume-upload",
+        href: "/dashboard/resume-upload",
         icon: Upload,
         color: "bg-blue-100 text-blue-600",
     },
