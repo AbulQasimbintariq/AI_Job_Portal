@@ -4,7 +4,7 @@ import { AuthResponse } from "@/types/auth";
 export const authService = {
     async login(email: string, password: string) {
         const { data } = await api.post<AuthResponse>(
-            "api/auth/login",
+            "auth/login",
             {
                 email,
                 password,
@@ -20,7 +20,7 @@ export const authService = {
         password: string
     ) {
         const { data } = await api.post<AuthResponse>(
-            "api/auth/register",
+            "auth/register",
             {
                 name,
                 email,
@@ -32,13 +32,13 @@ export const authService = {
     },
 
     async me() {
-        const { data } = await api.get("api/auth/me");
+        const { data } = await api.get("auth/me");
 
         return data;
     },
 
     async logout() {
-        const { data } = await api.post("api/auth/logout");
+        const { data } = await api.post("auth/logout");
 
         return data;
     },
