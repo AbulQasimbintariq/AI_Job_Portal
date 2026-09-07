@@ -19,19 +19,7 @@ const allowedOrigins = [
 
 app.use(
     cors({
-        origin: (origin, callback) => {
-            if (!origin) {
-                return callback(null, true);
-            }
-
-            if (allowedOrigins.includes(origin)) {
-                return callback(null, true);
-            }
-
-            console.error("❌ CORS blocked:", origin);
-
-            return callback(new Error("Not allowed by CORS"));
-        },
+        origin: "https://ai-job-portal-frontend-ruddy.vercel.app",
         credentials: true,
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
         allowedHeaders: ["Content-Type", "Authorization"],
@@ -60,3 +48,17 @@ app.use("/api/ai", aiRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
 export default app;
+
+// (origin: "https://ai-job-portal-frontend-ruddy.vercel.app", callback) => {
+//     if (!origin) {
+//         return callback(null, true);
+//     }
+
+//     if (allowedOrigins.includes(origin)) {
+//         return callback(null, true);
+//     }
+
+//     console.error("❌ CORS blocked:", origin);
+
+//     return callback(new Error("Not allowed by CORS"));
+// },
